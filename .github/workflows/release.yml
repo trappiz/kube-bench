@@ -5,13 +5,13 @@ on:
     tags:
       - "v*"
 env:
-  KIND_VERSION: "v0.24.0"
+  KIND_VERSION: "v0.33.0"
   KIND_IMAGE: "kindest/node:v1.37.0@sha256:a1ed56cfb0e7b93589bdf97c8cd566405a265939e3620fc4f5de89adff580ae5"
 
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-2604-2core
+    runs-on: ubuntu-latest
     steps:
       - name: Free disk space
         run: |
