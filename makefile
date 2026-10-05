@@ -1,6 +1,6 @@
 SOURCES := $(shell find . -name '*.go')
 BINARY := kube-bench
-DOCKER_ORG ?= trappiz
+DOCKER_ORG ?= trappis
 VERSION ?= $(shell git rev-parse --short=7 HEAD)
 KUBEBENCH_VERSION ?= $(shell git describe --tags --abbrev=0)
 IMAGE_NAME ?= $(DOCKER_ORG)/$(BINARY):$(VERSION)
@@ -9,7 +9,7 @@ GOOS ?= linux
 BUILD_OS := linux
 uname := $(shell uname -s)
 BUILDX_PLATFORM ?= linux/amd64,linux/arm64,linux/arm,linux/ppc64le,linux/s390x
-DOCKER_ORGS ?= aquasec
+DOCKER_ORGS ?= trappis
 GOARCH ?= $@
 # Kubernetes stable RPM repo minor for UBI images (pkgs.k8s.io .../v${K8S_PKGS_VERSION}/rpm/). Override: make build-docker-ubi K8S_PKGS_VERSION=1.33
 K8S_PKGS_VERSION ?= 1.34
