@@ -9,8 +9,8 @@
 [download]: https://img.shields.io/github/downloads/aquasecurity/kube-bench/total?logo=github
 [release-img]: https://img.shields.io/github/release/aquasecurity/kube-bench.svg?logo=github
 [release]: https://github.com/aquasecurity/kube-bench/releases
-[docker-pull]: https://img.shields.io/docker/pulls/aquasec/kube-bench?logo=docker&label=docker%20pulls%20%2F%20kube-bench
-[docker]: https://hub.docker.com/r/aquasec/kube-bench
+[docker-pull]: https://img.shields.io/docker/pulls/trappis/kube-bench?logo=docker&label=docker%20pulls%20%2F%20kube-bench
+[docker]: https://hub.docker.com/r/trappis/kube-bench
 [cov-img]: https://codecov.io/github/aquasecurity/kube-bench/branch/main/graph/badge.svg
 [cov]: https://codecov.io/github/aquasecurity/kube-bench
 [report-card-img]: https://goreportcard.com/badge/github.com/aquasecurity/kube-bench
