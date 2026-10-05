@@ -69,6 +69,21 @@ jobs:
    #       name: kube-bench
           node_image: ${{ env.KIND_IMAGE }}
           cluster_name: kube-bench
+
+      - name: Setup Kubernetes cluster (KIND)
+        uses: helm/kind-action@v1
+        with:
+          version: ${{ env.KIND_VERSION }}
+          node_image: ${{ env.KIND_IMAGE }}
+          cluster_name: kube-bench
+          config: |
+            kind: Cluster
+            apiVersion: kind.x-k8s.io/v1alpha4
+            containerdConfigPatches:
+            - |-
+              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+                snapshotter = "native"
+
       - name: Test connection to Kubernetes cluster
         run: |
           kubectl cluster-info
