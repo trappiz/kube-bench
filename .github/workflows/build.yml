@@ -63,7 +63,7 @@ jobs:
         with:
           go-version-file: go.mod
       - name: Setup Kubernetes cluster (KIND)
-        uses: engineerd/setup-kind@v0.5.0  # Update to latest version
+        uses: helm/kind-action@v1
         with:
           version: ${{ env.KIND_VERSION }}
           image: ${{ env.KIND_IMAGE }}
