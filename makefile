@@ -14,7 +14,7 @@ GOARCH ?= $@
 # Kubernetes stable RPM repo minor for UBI images (pkgs.k8s.io .../v${K8S_PKGS_VERSION}/rpm/). Override: make build-docker-ubi K8S_PKGS_VERSION=1.33
 K8S_PKGS_VERSION ?= 1.34
 
-KUBECTL_VERSION ?= 1.36.0-alpha.1
+KUBECTL_VERSION ?= 1.36.4
 ARCH ?= $(shell go env GOARCH 2>/dev/null || echo amd64)
 
 ifneq ($(findstring Microsoft,$(shell uname -r)),)
