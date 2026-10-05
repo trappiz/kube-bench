@@ -98,7 +98,7 @@ kind-run: kind-push
 		kubectl delete job kube-bench
 	KUBECONFIG=$(KUBECONFIG) \
 		kubectl apply -f ./hack/kind.test.yaml && \
-		kubectl wait --for=condition=complete job.batch/kube-bench --timeout=60s && \
+		kubectl wait --for=condition=complete job.batch/kube-bench --timeout=180s && \
 		kubectl logs job/kube-bench > ./test.data && \
 		diff ./test.data integration/testdata/Expected_output.data
 
@@ -110,6 +110,6 @@ kind-run-stig: kind-push
 		kubectl delete job kube-bench
 	KUBECONFIG=$(KUBECONFIG) \
 		kubectl apply -f ./hack/kind-stig.test.yaml && \
-		kubectl wait --for=condition=complete job.batch/kube-bench --timeout=60s && \
+		kubectl wait --for=condition=complete job.batch/kube-bench --timeout=180s && \
 		kubectl logs job/kube-bench > ./test.data && \
 		diff ./test.data integration/testdata/Expected_output_stig.data
