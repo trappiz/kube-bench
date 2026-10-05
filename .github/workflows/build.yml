@@ -61,14 +61,6 @@ jobs:
         uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 # v6.3.0
         with:
           go-version-file: go.mod
-      - name: Setup Kubernetes cluster (KIND)
-        uses: helm/kind-action@v1
-        with:
-          version: ${{ env.KIND_VERSION }}
-   #       image: ${{ env.KIND_IMAGE }}
-   #       name: kube-bench
-          node_image: ${{ env.KIND_IMAGE }}
-          cluster_name: kube-bench
 
       - name: Setup Kubernetes cluster (KIND)
         uses: helm/kind-action@v1
