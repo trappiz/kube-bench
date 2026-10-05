@@ -1,6 +1,6 @@
 SOURCES := $(shell find . -name '*.go')
 BINARY := kube-bench
-DOCKER_ORG ?= aquasec
+DOCKER_ORG ?= trappiz
 VERSION ?= $(shell git rev-parse --short=7 HEAD)
 KUBEBENCH_VERSION ?= $(shell git describe --tags --abbrev=0)
 IMAGE_NAME ?= $(DOCKER_ORG)/$(BINARY):$(VERSION)
@@ -9,7 +9,7 @@ GOOS ?= linux
 BUILD_OS := linux
 uname := $(shell uname -s)
 BUILDX_PLATFORM ?= linux/amd64,linux/arm64,linux/arm,linux/ppc64le,linux/s390x
-DOCKER_ORGS ?= aquasec public.ecr.aws/aquasecurity
+DOCKER_ORGS ?= aquasec
 GOARCH ?= $@
 # Kubernetes stable RPM repo minor for UBI images (pkgs.k8s.io .../v${K8S_PKGS_VERSION}/rpm/). Override: make build-docker-ubi K8S_PKGS_VERSION=1.33
 K8S_PKGS_VERSION ?= 1.34
@@ -28,7 +28,7 @@ endif
 # kind cluster name to use
 KIND_PROFILE ?= kube-bench
 KIND_CONTAINER_NAME=$(KIND_PROFILE)-control-plane
-KIND_IMAGE ?= kindest/node:v1.21.1@sha256:69860bda5563ac81e3c0057d654b5253219618a22ec3a346306239bba8cfa1a6
+KIND_IMAGE ?= kindest/node:v1.36.4@sha256:099e049362a1526b2db71494e1947aae99bd16290d7c895f2b7ea312e3cbfaed
 
 # build a multi-arch image and push to Docker hub
 .PHONY: docker
