@@ -6,8 +6,8 @@ on:
     tags:
       - "v*"
 env:
-  ALIAS: trappiz
-  DOCKERHUB_ALIAS: trappiz
+  ALIAS: trappis
+  DOCKERHUB_ALIAS: trappis
   REP: kube-bench
 
 jobs:
