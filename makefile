@@ -100,8 +100,8 @@ kind-run: kind-push
 		kubectl apply -f ./hack/kind.test.yaml && \
 		kubectl wait --for=condition=complete job.batch/kube-bench --timeout=180s && \
 		kubectl logs job/kube-bench > ./test.data && \
-		echo "Print all data in test.data" \
-		cat ./test.data \
+		echo "Print all data in test.data" && \
+		cat ./test.data && \
 		diff ./test.data integration/testdata/Expected_output.data 
 
 kind-run-stig: KUBECONFIG = "./kubeconfig.kube-bench"
@@ -114,6 +114,6 @@ kind-run-stig: kind-push
 		kubectl apply -f ./hack/kind-stig.test.yaml && \
 		kubectl wait --for=condition=complete job.batch/kube-bench --timeout=180s && \
 		kubectl logs job/kube-bench > ./test.data && \
-		echo "Print all data in test.data" \
-		cat ./test.data \
+		echo "Print all data in test.data" && \
+		cat ./test.data && \
 		diff ./test.data integration/testdata/Expected_output_stig.data
