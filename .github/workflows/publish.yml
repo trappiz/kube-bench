@@ -25,40 +25,48 @@ jobs:
           sudo rm -rf /opt/hostedtoolcache/CodeQL
           sudo docker image prune --all --force > /dev/null
           df -h
+
       - name: Check Out Repo
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a  # v4.0.0
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
+
       - name: Set up Docker Buildx
         id: buildx
-        uses: docker/setup-buildx-action@4d04d5d9486b7bd6fa91e7baf45bbb4f8b9deedd  # v4.0.0
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
       - name: Cache Docker layers
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae  # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: /tmp/.buildx-cache
           key: ${{ runner.os }}-buildxarch-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildxarch-
+
       - name: Login to Docker Hub
-        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121  # v4.1.0
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Get version
         id: get_version
-        uses: crazy-max/ghaction-docker-meta@c299e40c65443455700f0fdfc63efafe5b349051  # v5.10.0
+        uses: crazy-max/ghaction-docker-meta@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
         with:
           images: ${{ env.REP }}
           tag-semver: |
             {{version}}
+
       - name: Extract variables from makefile
         id: extract_vars
         run: |
           echo "KUBECTL_VERSION=$(grep -oP '^KUBECTL_VERSION\s*\?=\s*\K.*' makefile)" >> $GITHUB_ENV
           echo "K8S_PKGS_VERSION=$(grep -oP '^K8S_PKGS_VERSION\s*\?=\s*\K.*' makefile)" >> $GITHUB_ENV
+
       - name: Build and push - Docker
         id: docker_build
-        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf  # v7.2.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
@@ -75,7 +83,7 @@ jobs:
 
       - name: Build and push ubi image - Docker
         id: docker_build_ubi
-        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf  # v7.2.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
@@ -89,12 +97,13 @@ jobs:
             ${{ env.DOCKERHUB_ALIAS }}/${{ env.REP }}:${{ steps.get_version.outputs.version }}-ubi
           cache-from: type=local,src=/tmp/.buildx-cache/release
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache/release
+
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
 
       - name: Build and push fips ubi image - Docker
         id: docker_build_fips_ubi
-        uses: docker/build-push-action@f9f3042f7e2789586610d6e8b85c8f03e5195baf  # v7.2.0
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
         with:
           context: .
           platforms: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x
@@ -108,5 +117,7 @@ jobs:
             ${{ env.DOCKERHUB_ALIAS }}/${{ env.REP }}:${{ steps.get_version.outputs.version }}-ubi-fips
           cache-from: type=local,src=/tmp/.buildx-cache/release
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache/release
+
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
