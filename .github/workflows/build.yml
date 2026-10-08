@@ -97,7 +97,7 @@ jobs:
           make integration-test
 
       - name: Compare output with expected output
-        uses: GuillaumeFalourd/diff-action@b341507d1da990caceac1b3b31b8f55eebaa2e99  # v1
+        uses: trappiz/diff-action@ea28c0182d69167847bfbbae870754dc58cbe241  # v1.1
         with:
           first_file_path: ./test.data
           second_file_path: integration/testdata/Expected_output.data
