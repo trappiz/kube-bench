@@ -2,19 +2,19 @@
 [![Downloads][download]][release]
 [![Docker Pulls][docker-pull]][docker]
 [![Go Report Card][report-card-img]][report-card]
-[![Build Status](https://github.com/aquasecurity/kube-bench/workflows/Build/badge.svg?branch=main)](https://github.com/aquasecurity/kube-bench/actions)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/aquasecurity/kube-bench/blob/main/LICENSE)
+[![Build Status](https://github.com/trappiz/kube-bench/workflows/Build/badge.svg?branch=main)](https://github.com/aquasecurity/kube-bench/actions)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/trappiz/kube-bench/blob/main/LICENSE)
 [![Coverage Status][cov-img]][cov]
 
-[download]: https://img.shields.io/github/downloads/aquasecurity/kube-bench/total?logo=github
-[release-img]: https://img.shields.io/github/release/aquasecurity/kube-bench.svg?logo=github
-[release]: https://github.com/aquasecurity/kube-bench/releases
+[download]: https://img.shields.io/github/downloads/trappiz/kube-bench/total?logo=github
+[release-img]: https://img.shields.io/github/release/trappiz/kube-bench.svg?logo=github
+[release]: https://github.com/trappiz/kube-bench/releases
 [docker-pull]: https://img.shields.io/docker/pulls/trappis/kube-bench?logo=docker&label=docker%20pulls%20%2F%20kube-bench
 [docker]: https://hub.docker.com/r/trappis/kube-bench
-[cov-img]: https://codecov.io/github/aquasecurity/kube-bench/branch/main/graph/badge.svg
-[cov]: https://codecov.io/github/aquasecurity/kube-bench
-[report-card-img]: https://goreportcard.com/badge/github.com/aquasecurity/kube-bench
-[report-card]: https://goreportcard.com/report/github.com/aquasecurity/kube-bench
+[cov-img]: https://codecov.io/github/trappiz/kube-bench/branch/main/graph/badge.svg
+[cov]: https://codecov.io/github/trappiz/kube-bench
+[report-card-img]: https://goreportcard.com/badge/github.com/trappiz/kube-bench
+[report-card]: https://goreportcard.com/report/github.com/trappiz/kube-bench
 
 <img src="docs/images/kube-bench.png" width="200" alt="kube-bench logo">
 
